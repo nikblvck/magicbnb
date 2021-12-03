@@ -1,0 +1,22 @@
+* {
+  list-style-type: none;
+}
+a{
+  color:white;
+}
+
+a:hover{
+  font-size: 120%;
+}
+.rNavLinks {
+  padding: 10px;
+}
+.navRight {
+  float: right;
+  padding-right: 40px;
+}
+
+.navLeft{
+  padding-top: 10px;
+  float: left;
+}
