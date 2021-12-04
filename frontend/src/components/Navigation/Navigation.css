@@ -1,22 +1,31 @@
 * {
   list-style-type: none;
+  scroll-behavior: none;
 }
 a{
   color:white;
+  padding: 10px;
 }
 
 a:hover{
   font-size: 120%;
+
 }
-.rNavLinks {
-  padding: 10px;
-}
-.navRight {
-  float: right;
-  padding-right: 40px;
+
+.navContainer{
+  min-width: 300px;
+  max-width: 3200px;
+  height: 50px;
+  background-color: black;
+  display: flex;
+  text-align: center;
+
 }
 
 .navLeft{
-  padding-top: 10px;
   float: left;
+}
+
+.navRight{
+  float: right;
 }
