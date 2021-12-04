@@ -1,8 +1,15 @@
+import './HomePage.css';
+
 
 function Homepage () {
+
   return (
     <>
-      <div><h1>magicbnb</h1></div>
+      <div className="home-container">
+        <h1 className="welcome-heading">
+          magicbnb
+        </h1>
+      </div>
     </>
   )
 }

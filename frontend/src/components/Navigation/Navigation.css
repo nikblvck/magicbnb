@@ -1,6 +1,7 @@
 * {
   list-style-type: none;
   scroll-behavior: none;
+  font-family: 'Comfortaa', cursive;
 }
 a{
   color:white;
@@ -11,12 +12,16 @@ a:hover{
   font-size: 120%;
 
 }
+.profile-dropdown .a{
+  color:white;
+}
+
 
 .navContainer{
   min-width: 300px;
   max-width: 3200px;
   height: 50px;
-  background-color: black;
+  background-color:rgba(0, 0, 0, 0.6);
   display: flex;
   text-align: center;
 
