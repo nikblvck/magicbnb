@@ -11,8 +11,10 @@ body{
   justify-content: center;
   height: 400px;
   width: 600px;
+  border-radius: 32px;
 }
 .welcome-heading{
+  padding-top: 20px;
   font-family: 'Comfortaa', cursive;
   font-size: 5em;
   justify-content: center;
