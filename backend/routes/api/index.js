@@ -8,7 +8,15 @@ const { User } = require("../../db/models");
 router.use("/session", sessionRouter);
 
 router.use("/users", usersRouter);
-
+router.get("/", asyncHandler(async(req, res) => {
+  const user = await User.findOne({
+    where: {
+      username
+    },
+  })
+  console.log(`route hit`)
+  return res.json({user});
+}))
 router.get(
   "/set-token-cookie",
   asyncHandler(async (req, res) => {
