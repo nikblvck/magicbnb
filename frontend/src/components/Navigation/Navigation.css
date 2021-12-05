@@ -12,9 +12,15 @@ a:hover{
   font-size: 120%;
 
 }
+
+button{
+  position: -webkit-sticky;
+}
 ul.profile-dropdown{
+  padding-top:150px;
   color:white;
-  position:fixed;
+  position: relative;
+  display: inline-block;
   background-color: black;
   padding-top: 50px;
   border-radius: 32px;
