@@ -12,10 +12,26 @@ a:hover{
   font-size: 120%;
 
 }
-.profile-dropdown .a{
+
+button{
+  position: -webkit-sticky;
+}
+ul.profile-dropdown{
+  padding-top:150px;
   color:white;
+  position: relative;
+  display: inline-block;
+  background-color: black;
+  padding-top: 50px;
+  border-radius: 32px;
+  align-items: center;
+  text-align: center;
 }
 
+li{
+  align-items: center;
+  text-align: center;
+}
 
 .navContainer{
   min-width: 300px;

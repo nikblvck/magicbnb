@@ -36,7 +36,11 @@ function SignupFormPage() {
       });
     }
     return setErrors([
+<<<<<<< HEAD
       "Password entries do not match.",
+=======
+      "Passwords do not match.",
+>>>>>>> main
     ]);
   };
 
