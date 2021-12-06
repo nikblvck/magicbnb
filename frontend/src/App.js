@@ -5,8 +5,9 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import Homepage from "./components/HomePage";
-import SpotsPage from "./components/SpotsPage";
+import HomePage from "./components/HomePage";
+import SpotPage from "./components/SpotPage";
+
 
 
 function App() {
@@ -18,20 +19,25 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-        <Switch>
-          <Route exact path="/">
-            <Homepage/>
-          </Route>
-          <Route exact path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route exact path="/signup">
-            <SignupFormPage />
-          </Route>
-        </Switch>
+      <header>
+        <Navigation isLoaded={isLoaded} />
+      </header>
+      <main>
+        {isLoaded && (
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route exact path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route exact path="/spots/:spotId">
+              <SpotPage />
+            </Route>
+          </Switch>
+        )}
+      </main>
     </>
   );
 }
-
 export default App;
