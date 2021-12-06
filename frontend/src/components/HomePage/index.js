@@ -46,6 +46,7 @@ function HomePage() {
                     <li className="spotList" id="spotPrice">
                       ${spot.price} per night
                     </li>
+                    <br/>
                     <li classname="spotList" id="spotCity">
                       {spot.city}, {spot.state}
                     </li>
