@@ -8,6 +8,15 @@ const { User } = require("../../db/models");
 const router = express.Router();
 
 const validateSignup = [
+  check("firstName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide your first name."),
+  check("lastName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide your last name"),
+  check("houseAllegiance")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide your House Allegiance. Rep your set!"),
   check("email")
     .exists({ checkFalsy: true })
     .isEmail()
@@ -26,18 +35,26 @@ const validateSignup = [
 
 // Sign up
 router.post(
-  '/',
+  "/",
   validateSignup,
   asyncHandler(async (req, res) => {
-    const { email, password, username } = req.body;
-    const user = await User.signup({ email, username, password });
+    const { firstName, lastName, houseAllegiance, email, password, username } =
+      req.body;
+    const user = await User.signup({
+      firstName,
+      lastName,
+      houseAllegiance,
+      email,
+      username,
+      password,
+    });
 
     await setTokenCookie(res, user);
 
     return res.json({
       user,
     });
-  }),
+  })
 );
 
 // Restore session user
