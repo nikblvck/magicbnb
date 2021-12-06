@@ -86,7 +86,7 @@ function SignupFormPage() {
         </label>
         <label>
           Hogwarts House
-          <select
+          <select className="select"
             value={houseAllegiance}
             onChange={(e) => setHouseAllegiance(e.target.value)}
           >
