@@ -1,0 +1,22 @@
+.spotContainer{
+  margin: auto;
+  background-color:rgba(255, 255, 255, 0.35);
+  justify-content: center;
+  border-radius: 32px;
+}
+h1{
+  color: crimson;
+  text-align: center;
+}
+ul {
+  margin: 0 auto;
+  text-align: center;
+}
+li {
+  display: inline-block;
+  vertical-align: top;
+}
+div.userButtons{
+ align-items: center;
+ justify-content: center;
+}

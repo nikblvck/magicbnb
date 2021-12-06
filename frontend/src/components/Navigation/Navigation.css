@@ -14,18 +14,17 @@ a:hover{
 }
 
 button{
-  position: -webkit-sticky;
+  position: fixed;
 }
 ul.profile-dropdown{
-  padding-top:150px;
   color:white;
   position: relative;
   display: inline-block;
   background-color: black;
-  padding-top: 50px;
   border-radius: 32px;
   align-items: center;
   text-align: center;
+  z-index: 2;
 }
 
 li{
