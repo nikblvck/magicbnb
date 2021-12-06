@@ -22,6 +22,18 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false,
       },
+      firstName: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+      },
+      lastName: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+      },
+      houseAllegiance: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -34,7 +46,6 @@ module.exports = {
       },
     });
   },
-
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable("Users");
   },

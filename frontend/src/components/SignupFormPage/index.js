@@ -35,7 +35,17 @@ function SignupFormPage() {
         if (data && data.errors) setErrors(data.errors);
       });
     }
+<<<<<<< HEAD
     return setErrors(["Password entries don't match"]);
+=======
+    return setErrors([
+<<<<<<< HEAD
+      "Password entries do not match.",
+=======
+      "Passwords do not match.",
+>>>>>>> main
+    ]);
+>>>>>>> database
   };
 
   return (

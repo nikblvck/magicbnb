@@ -6,6 +6,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Homepage from "./components/HomePage";
+import SpotsPage from "./components/SpotsPage";
+
 
 function App() {
   const dispatch = useDispatch();
