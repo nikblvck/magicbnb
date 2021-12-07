@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {useState, useEffect} from "react";
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router-dom";
 import {addSpot} from "../../store/spots";
 
 
@@ -35,7 +35,7 @@ function CreateSpot () {
         url,
       };
       dispatch(addSpot(newSpot)).then((spot) =>
-      history.push(`spots/${spot.id}`));
+     <Redirect to={`/spots/${spot.id}`}/>);
     };
 
     return (

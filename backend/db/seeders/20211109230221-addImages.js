@@ -1015,7 +1015,7 @@ module.exports = {
         },
         {
           spotId: 21,
-          url: "hhttps://res.cloudinary.com/blvckmagic/image/upload/v1636883716/BlvckMagic/Slytherin/StylishApt5.jpg_nak5ua.webp",
+          url: "https://res.cloudinary.com/blvckmagic/image/upload/v1636883716/BlvckMagic/Slytherin/StylishApt5.jpg_nak5ua.webp",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

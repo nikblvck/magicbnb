@@ -184,7 +184,7 @@ module.exports = {
           country: "US",
           lat: null,
           lng: null,
-          price: 227,
+          price: 17,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
