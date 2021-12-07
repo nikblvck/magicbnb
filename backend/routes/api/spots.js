@@ -57,7 +57,7 @@ router.post(
   requireAuth,
   validateSpot,
   asyncHandler(async (req, res) => {
-    const { name, userId, address, city, state, country, lng, lat, price } =
+    const { name, userId, address, city, state, country, lng, lat, price, url } =
       req.body;
     const spot = await Spot.create({
       name,
@@ -125,7 +125,6 @@ router.delete(
     const spotId = req.params.id;
 
     const spot = await Spot.findByPk(spotId);
-
     if (spot && spot.userId === userId) {
       await spot.destroy();
       return res.json({ message: `Spot ${spotId} deleted.` });

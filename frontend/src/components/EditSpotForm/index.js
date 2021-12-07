@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router";
 import { useParams } from "react-router-dom";
 import * as sessionActions from "../../store/spots";
-import { getOneSpot, addSpot } from "../../store/spots";
+import { getOneSpot, editSpot } from "../../store/spots";
 
 
 const stateOptions = ["OR", "WA"];
@@ -22,7 +22,7 @@ function EditSpot() {
   const [state, setState] = useState(spot?.state);
   const [country, setCountry] = useState(spot?.country);
   const [price, setPrice] = useState(spot?.price);
-  const [url, setImageUrl] = useState(spot?.Images[0].url);
+  const [url, setImageUrl] = useState(spot?.Images[0].url || "")
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -32,7 +32,9 @@ function EditSpot() {
   const handleEdit = (e) => {
 
     e.preventDefault();
+    const userId = sessionUser.id
     const editedSpot = {
+      userId,
       spotId,
       name,
       address,
@@ -42,7 +44,7 @@ function EditSpot() {
       price,
       url,
     };
-    dispatch(addSpot(editedSpot)).then((spot) =>
+    dispatch(editSpot(editedSpot)).then((spot) =>
       history.push(`/spots/${spot.id}`)
     );
   };
