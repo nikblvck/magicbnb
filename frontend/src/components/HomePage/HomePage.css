@@ -6,10 +6,13 @@ body{
   background-size: cover;
 }
 .home-container{
+  padding-top: 20px;
   margin: auto;
   background-color:rgba(255, 255, 255, 0.35);
   justify-content: center;
   border-radius: 32px;
+  max-width: 1200px;
+  align-items: center;
 }
 .welcome-heading{
   padding-top: 20px;
@@ -17,17 +20,21 @@ body{
   font-size: 5em;
   justify-content: center;
   text-align: center;
+  text-shadow:  rgba(0, 0, 0, 0.65) 1px 1px;
 }
 p {
-  color: crimson;
+  color: black;
   align-items: center;
   text-align: center;
 }
 ul {
   margin: 0 auto;
   text-align: center;
+  justify-content: center;
 }
 li.spotImage {
+  justify-content: center;
+  align-items: center;
   display: inline-block;
   vertical-align: top;
 }
@@ -35,4 +42,9 @@ li.spotImage {
   height: 200px;
   width: 300px;
   border-radius: 32px;
+}
+
+.spotDiv {
+  border-bottom:rgba(0, 0, 0, 0.35) 1.25px dotted;
+
 }

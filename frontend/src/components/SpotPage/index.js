@@ -38,8 +38,13 @@ function SpotPage() {
   if (sessionUser && sessionUser.id === spot.userId) {
     userButtons = (
       <>
-        <button onClick={handleSubmit}> Edit</button>
-        <button onClick={handleDelete}> Delete</button>
+        <button onClick={handleSubmit}>
+          {" "}
+          <i className="fas fa-edit"/>
+        </button>
+        <button onClick={handleDelete}>
+          <i className="fas fa-trash"/>
+        </button>
       </>
     );
   } else {
@@ -73,24 +78,6 @@ function SpotPage() {
           </div>
         </div>
       )}
-      {/* <div>
-        <h1>{spot.name}</h1>
-      </div>
-      <div className="spotIdContainer">
-        {spot.Images.map((image) => {
-          if (image) {
-            return (
-              <div className="spotImageDiv" key={image.id}>
-                <img src={image.url} className="spotImage" />
-              </div>
-            );
-          }
-        })}
-        <ul>
-          <li>{spot.price} per night</li>
-          <li>{spot.cityName}, {spot.stateName}</li>
-        </ul>
-      </div> */}
       <div className="userButtons">{userButtons}</div>
     </>
   );

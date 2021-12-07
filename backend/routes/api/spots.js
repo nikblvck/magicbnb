@@ -1,8 +1,32 @@
 const express = require("express");
-const router = express.Router();
 const asyncHandler = require("express-async-handler");
-const { Spot, Image } = require("../../db/models");
+const db = require("../../db/models");
+const { Spot, Image } = db;
+const router = express.Router();
+const { Op } = require("sequelize");
+const { check } = require("express-validator");
+const { handleValidationErrors } = require("../../utils/validation");
 const { requireAuth } = require("../../utils/auth");
+const { response } = require("express");
+
+//validation for spot creation
+const validateSpot = [
+  check("name")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a name for your new spot."),
+  check("address")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a name for your new spot."),
+  check("city")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a city name. "),
+  handleValidationErrors,
+];
+
+//spot not found
+const spotNotFound = () => {
+  return new Error('Spot does not exist')
+}
 
 //get all spots
 router.get(
@@ -26,6 +50,72 @@ router.get(
     return res.json({ spot });
   })
 );
+
+//create spot
+router.post(
+  "/",
+  requireAuth,
+  validateSpot,
+  asyncHandler(async (req, res) => {
+    const { name, userId, address, city, state, country, lng, lat, price } =
+      req.body;
+    const spot = await Spot.create({
+      name,
+      userId,
+      address,
+      city,
+      state,
+      country,
+      lng,
+      lat,
+      price,
+    });
+
+    const image = await Image.create({ spotId: spot.id, url });
+
+    return res.json({
+      spot,
+      image,
+    });
+  })
+);
+
+//edit spot
+router.put(
+  "/:id(\\d+)",
+  requireAuth,
+  asyncHandler(async (req, res, next) => {
+    const spotId = req.params.id;
+    const userId = req.user.id;
+
+    const { name, address, city, state, country, price, url } = req.body;
+
+    const spot = await Spot.findByPk(spotId);
+    const image = await Image.findOne({
+      where: {
+        spotId: {
+          [Op.eq]: spot.id,
+        },
+      },
+    });
+    if (spot && spot.userId === userId) {
+      spot.name = req.body.name || spot.name;
+      spot.address = req.body.address || spot.address;
+      spot.city = req.body.city || spot.city;
+      spot.state = req.body.state || spot.state;
+      spot.country = req.body.country || state.country;
+      image.url = req.body.url || image.url;
+      await spot.save();
+    }
+
+    if (image && image.spotId === spot.id) {
+      image.url = url;
+      await image.save();
+    }
+    return response.json({ spot });
+  })
+);
+
 //delete spot
 router.delete(
   "/:id(\\d+)",
@@ -40,6 +130,7 @@ router.delete(
       await spot.destroy();
       return res.json({ message: `Spot ${spotId} deleted.` });
     } else {
+      const error = spotNotFound();
       next(error);
     }
   })
