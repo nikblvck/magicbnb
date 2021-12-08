@@ -35,7 +35,7 @@ function CreateSpot () {
         url,
       };
       dispatch(addSpot(newSpot)).then((spot) =>
-     <Redirect to={`/spots/${spot.id}`}/>);
+    history.push(`/spots/${spot.id}`));
     };
 
     return (

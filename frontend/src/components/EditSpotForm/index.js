@@ -22,12 +22,12 @@ function EditSpot() {
   const [state, setState] = useState(spot?.state);
   const [country, setCountry] = useState(spot?.country);
   const [price, setPrice] = useState(spot?.price);
-  const [url, setImageUrl] = useState(spot?.Images[0].url || "")
+  const [url, setImageUrl] = useState("")
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(getOneSpot(spotId)).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, spotId]);
 
   const handleEdit = (e) => {
 
