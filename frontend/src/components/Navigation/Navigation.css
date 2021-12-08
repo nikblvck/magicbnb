@@ -15,16 +15,18 @@ a:hover{
 
 }
 
-
+button {
+  position:-webkit-sticky
+}
 ul.profile-dropdown{
   color:white;
   position: relative;
-  display: inline-block;
+  display: inline-table;
   background-color: black;
   border-radius: 32px;
   align-items: center;
   text-align: center;
-  z-index: 2;
+
 }
 
 li{
@@ -33,15 +35,16 @@ li{
 }
 
 .navContainer{
+  display: flexbox;
   min-width: 300px;
   max-width: 3200px;
   height: 50px;
   background-color:rgba(0, 0, 0, 0.6);
-  display: flexbox;
   text-align: center;
   align-items: center;
   padding: 0 5%;
-  justify-content: center;
+  justify-content: space-evenly;
+
 }
 
 .navLeft{

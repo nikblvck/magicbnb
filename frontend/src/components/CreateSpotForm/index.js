@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import {addSpot} from "../../store/spots";
 
 
@@ -20,7 +20,7 @@ function CreateSpot () {
     const [price, setPrice] = useState("");
     const [url, setImageUrl] = useState("");
     // const [errors, setErrors] = useState([]);
-
+  if (!sessionUser) return <Redirect to="/login" />;
     const handleSubmit = (e) => {
       e.preventDefault();
       const userId = sessionUser.id

@@ -38,41 +38,41 @@ const erase = (spotId) => ({
 
 //get all spots
 export const getSpots = () => async (dispatch) => {
-  const response = await csrfFetch("/api/spots");
-  if (response.ok) {
-    const spots = await response.json();
+  const res = await csrfFetch("/api/spots");
+  if (res.ok) {
+    const spots = await res.json();
     dispatch(load(spots));
   }
 };
 
 //get one spot
 export const getOneSpot = (spotId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/spots/${spotId}`);
-  const data = await response.json();
+  const res = await csrfFetch(`/api/spots/${spotId}`);
+  const data = await res.json();
   dispatch(loadOne(data.spot));
   return data.spot;
 };
 //edit spot
 export const editSpot = (editedSpot) => async (dispatch) => {
   const spotId = editedSpot.spotId;
-  const response = await csrfFetch(`/api/spots/${spotId}`, {
+  const res = await csrfFetch(`/api/spots/${spotId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(editedSpot),
   });
-  const data = await response.json();
+  const data = await res.json();
   await dispatch(addSpot(data.spot, data.image));
 };
 
 //add spot
 export const addSpot = (spot) => async(dispatch) => {
-  const response = await csrfFetch(`/api/spots`, {
+  const res = await csrfFetch(`/api/spots`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(spot)
   });
 
-  const data = await response.json();
+  const data = await res.json();
 
   await dispatch(add(data.spot, data.image));
   return data.spot;
@@ -80,11 +80,11 @@ export const addSpot = (spot) => async(dispatch) => {
 
 //delete spot
 export const deleteSpot = (spotId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/spots/${spotId}`, {
+  const res = await csrfFetch(`/api/spots/${spotId}`, {
     method: "DELETE",
   });
 
-  const data = await response.json();
+  const data = await res.json();
   if (data.message) {
     dispatch(erase(spotId));
   }

@@ -84,6 +84,7 @@ router.post(
 router.put(
   "/:id(\\d+)",
   requireAuth,
+  validateSpot,
   asyncHandler(async (req, res, next) => {
     const spotId = req.params.id;
     const userId = req.user.id;
@@ -112,7 +113,7 @@ router.put(
       image.url = url;
       await image.save();
     }
-    return response.json({ spot, image});
+    return res.json({ spot, image});
   })
 );
 

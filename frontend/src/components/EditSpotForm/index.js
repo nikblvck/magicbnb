@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router";
+import {  useHistory, Redirect } from "react-router";
 import { useParams } from "react-router-dom";
-import * as sessionActions from "../../store/spots";
 import { getOneSpot, editSpot } from "../../store/spots";
 
 
@@ -29,7 +28,7 @@ function EditSpot() {
     dispatch(getOneSpot(spotId)).then(() => setIsLoaded(true));
   }, [dispatch, spotId]);
 
-
+ if (!sessionUser) return <Redirect to="/login" />;
   const handleEdit = async function(e){
     e.preventDefault();
     const userId = sessionUser.id;
@@ -45,14 +44,13 @@ function EditSpot() {
       url,
     };
 
-    const spot = await dispatch(editSpot(editedSpot))
+   dispatch(editSpot(editedSpot))
     console.log(spot)
-    if(spot) {
+
       history.push(`/spots/${spot.id}`)
-    }else {
-      return
-    }
+
   };
+
 
   return (
     <>
