@@ -22,7 +22,7 @@ function EditSpot() {
   const [state, setState] = useState(spot?.state);
   const [country, setCountry] = useState(spot?.country);
   const [price, setPrice] = useState(spot?.price);
-  const [url, setImageUrl] = useState("")
+  const [url, setImageUrl] = useState(spot?.Images.url)
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ function EditSpot() {
       url,
     };
     dispatch(editSpot(editedSpot)).then((spot) =>
-      history.push(`/spots/${spot.id}`)
+     <Redirect to={`/spots/${spotId}`}/>
     );
   };
 

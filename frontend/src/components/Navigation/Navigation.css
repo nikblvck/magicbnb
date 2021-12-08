@@ -37,14 +37,16 @@ li{
   max-width: 3200px;
   height: 50px;
   background-color:rgba(0, 0, 0, 0.6);
-  display: flex;
+  display: flexbox;
   text-align: center;
   align-items: center;
   padding: 0 5%;
+  justify-content: center;
 }
 
 .navLeft{
-  float: left;
+ float:left;
+ align-items: center;
 }
 
 .navRight{
