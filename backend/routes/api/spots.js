@@ -112,7 +112,7 @@ router.put(
       image.url = url;
       await image.save();
     }
-    return response.json({ spot });
+    return response.json({ spot, image});
   })
 );
 

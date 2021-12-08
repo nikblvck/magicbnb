@@ -22,7 +22,7 @@ function EditSpot() {
   const [state, setState] = useState(spot?.state);
   const [country, setCountry] = useState(spot?.country);
   const [price, setPrice] = useState(spot?.price);
-  const [url, setImageUrl] = useState(spot?.Images.url)
+  const [url, setImageUrl] = useState(spot?.Images[0].url)
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -30,9 +30,8 @@ function EditSpot() {
   }, [dispatch, spotId]);
 
   const handleEdit = (e) => {
-
     e.preventDefault();
-    const userId = sessionUser.id
+    const userId = sessionUser.id;
     const editedSpot = {
       userId,
       spotId,
@@ -44,9 +43,10 @@ function EditSpot() {
       price,
       url,
     };
-    dispatch(editSpot(editedSpot)).then((spot) =>
-     <Redirect to={`/spots/${spotId}`}/>
-    );
+
+    dispatch(editSpot(editedSpot)).then(() => {
+      history.push(`/spots/${spot.id}`);
+    });
   };
 
   return (
@@ -126,7 +126,7 @@ function EditSpot() {
                 onChange={(e) => setImageUrl(e.target.value)}
               />
             </label>
-            <button type="submit">Update Spot</button>
+            <button type="submit" onClick={handleEdit}>Update Spot</button>
           </form>
         </div>
       )}
