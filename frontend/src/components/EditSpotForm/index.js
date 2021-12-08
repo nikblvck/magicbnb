@@ -29,7 +29,8 @@ function EditSpot() {
     dispatch(getOneSpot(spotId)).then(() => setIsLoaded(true));
   }, [dispatch, spotId]);
 
-  const handleEdit = (e) => {
+
+  const handleEdit = async function(e){
     e.preventDefault();
     const userId = sessionUser.id;
     const editedSpot = {
@@ -43,10 +44,11 @@ function EditSpot() {
       price,
       url,
     };
-    const spot = dispatch(editSpot(editSpot))
 
+    const spot = await dispatch(editSpot(editedSpot))
+    console.log(spot)
     if(spot) {
-      history.push(`/spots/${spotId}`)
+      history.push(`/spots/${spot.id}`)
     }else {
       return
     }

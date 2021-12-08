@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import {useState, useEffect} from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import {useState } from "react";
+import { useHistory } from "react-router-dom";
 import {addSpot} from "../../store/spots";
 
 
@@ -19,7 +19,7 @@ function CreateSpot () {
     const [country, setCountry] = useState("");
     const [price, setPrice] = useState("");
     const [url, setImageUrl] = useState("");
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
       e.preventDefault();
