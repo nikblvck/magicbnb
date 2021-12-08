@@ -31,6 +31,25 @@ function EditSpot() {
  if (!sessionUser) return <Redirect to="/login" />;
   const handleEdit = async function(e){
     e.preventDefault();
+
+       const validationErrors = [];
+
+       if (!name) validationErrors.push("Please give your spot a name");
+       if (name.length < 10)
+         validationErrors.push(
+           "Location name must be greater than 10 characters"
+         );
+       if (name.length > 255)
+         validationErrors.push(
+           "Location Name Must Be Less Than 255 Characters"
+         );
+       if (!address) validationErrors.push("Please enter an address");
+       if (!city) validationErrors.push("Please enter a city");
+       if (!state) validationErrors.push("Please select a state");
+       if (!country) validationErrors.push("Please select a country");
+       if (!price) validationErrors.push("Please enter a price");
+       setErrors(validationErrors);
+       
     const userId = sessionUser.id;
     const editedSpot = {
       userId,
