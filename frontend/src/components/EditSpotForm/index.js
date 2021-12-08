@@ -43,10 +43,13 @@ function EditSpot() {
       price,
       url,
     };
+    const spot = dispatch(editSpot(editSpot))
 
-    dispatch(editSpot(editedSpot)).then(() => {
-      history.push(`/spots/${spot.id}`);
-    });
+    if(spot) {
+      history.push(`/spots/${spotId}`)
+    }else {
+      return
+    }
   };
 
   return (
