@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import {useState } from "react";
+import {useEffect, useState } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import {addSpot} from "../../store/spots";
 
@@ -15,14 +15,41 @@ function CreateSpot () {
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
-    const [state, setState] = useState("");
-    const [country, setCountry] = useState("");
+    const [state, setState] = useState(stateOptions[0]);
+    const [country, setCountry] = useState(stateOptions[0]);
     const [price, setPrice] = useState("");
     const [url, setImageUrl] = useState("");
-    // const [errors, setErrors] = useState([]);
-  if (!sessionUser) return <Redirect to="/login" />;
+    const [errors, setErrors] = useState([]);
+
+
+  useEffect(() => {
+
+  }, [name, address, city, state, country, price])
+
+    if (!sessionUser) return <Redirect to="/login" />;
     const handleSubmit = (e) => {
       e.preventDefault();
+
+
+        const validationErrors = [];
+
+        if (!name) validationErrors.push("Please give your spot a name");
+        if (name.length < 10)
+          validationErrors.push(
+            "Location name must be greater than 10 characters"
+          );
+        if (name.length > 255)
+          validationErrors.push(
+            "Location Name Must Be Less Than 255 Characters"
+          );
+        if (!address) validationErrors.push("Please enter an address");
+        if (!city) validationErrors.push("Please enter a city");
+        if (!state) validationErrors.push("Please select a state");
+        if (!country) validationErrors.push("Please select a country");
+        if (!price) validationErrors.push("Please enter a price");
+        setErrors(validationErrors);
+
+
       const userId = sessionUser.id
       const newSpot = {
         userId,
@@ -34,44 +61,48 @@ function CreateSpot () {
         price,
         url,
       };
+
+      if(!errors)
       dispatch(addSpot(newSpot)).then((spot) =>
     history.push(`/spots/${spot.id}`));
     };
 
     return (
       <>
-      <div className="formContainer">
-        <form onSubmit={handleSubmit}>
-          <label>
-            Location Name
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-          <label>
-            Address
-            <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            />
-          </label>
-          <label>
-            City
-            <input
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            />
-          </label>
-          <label id="state">
+        <div className="formContainer">
+          <form onSubmit={handleSubmit}>
+            <ul className="errors">
+              {errors.map((error) => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
+            <label>
+              Location Name
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+            <label>
+              Address
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </label>
+            <label>
+              City
+              <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
+            </label>
+            <label id="state">
               State
-              <select
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-              >
+              <select className ="select" value={state} onChange={(e) => setState(e.target.value)}>
                 {stateOptions.map((option) => (
                   <option>{option}</option>
                 ))}
@@ -81,6 +112,7 @@ function CreateSpot () {
             <label id="country">
               Country
               <select
+                className="select"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
               >
@@ -96,7 +128,6 @@ function CreateSpot () {
                 type="number"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-                required
               />
             </label>
             <label>

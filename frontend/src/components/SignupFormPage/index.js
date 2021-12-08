@@ -17,7 +17,7 @@ function SignupFormPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [houseAllegiance, setHouseAllegiance] = useState("");
+  const [houseAllegiance, setHouseAllegiance] = useState(options[0]);
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;

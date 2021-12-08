@@ -8,7 +8,7 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-  
+
 
   const openMenu = () => {
     if (showMenu) return;
@@ -39,12 +39,18 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i class="fas fa-hat-wizard"/>
-      </button>
-      <button onClick={handleClickToCreate}>
-        <i class="fas fa-magic"/>
-      </button>
+      <ul className="navButtons">
+        <li>
+        <button onClick={openMenu}>
+          <i class="fas fa-hat-wizard" />
+        </button>
+        </li>
+        <li>
+        <button onClick={handleClickToCreate}>
+          <i class="fas fa-magic" />
+        </button>
+        </li>
+      </ul>
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>
