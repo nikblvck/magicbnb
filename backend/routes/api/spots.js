@@ -105,6 +105,7 @@ router.put(
       spot.city = req.body.city || spot.city;
       spot.state = req.body.state || spot.state;
       spot.country = req.body.country || state.country;
+      spot.price = req.body.price || spot.price;
       image.url = req.body.url || image.url;
       await spot.save();
     }
