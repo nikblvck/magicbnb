@@ -49,7 +49,7 @@ function EditSpot() {
        if (!country) validationErrors.push("Please select a country");
        if (!price) validationErrors.push("Please enter a price");
        setErrors(validationErrors);
-       
+
     const userId = sessionUser.id;
     const editedSpot = {
       userId,
@@ -74,8 +74,10 @@ function EditSpot() {
   return (
     <>
       {isLoaded && (
-        <div>
-          <form onSubmit={handleEdit}>
+
+        <div className="formContainer">
+          <h2> Edit Your Spot</h2>
+          <form  onSubmit={handleEdit}>
             <ul>
               {errors.map((error, i) => (
                 <li key={i}>{error}</li>

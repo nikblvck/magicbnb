@@ -69,12 +69,12 @@ function CreateSpot () {
     return (
       <>
         <div className="formContainer">
+          <h2> Create A New Spot</h2>
           <form onSubmit={handleSubmit}>
             <ul className="errors">
               {errors.map((error) => (
                 <li key={error}>
                   {error}
-                  <br />
                 </li>
               ))}
             </ul>
