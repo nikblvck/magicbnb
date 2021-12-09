@@ -73,7 +73,10 @@ function CreateSpot () {
           <form onSubmit={handleSubmit}>
             <ul className="errors">
               {errors.map((error) => (
-                <li key={error}>{error}</li>
+                <li key={error}>
+                  {error}
+                  <br />
+                </li>
               ))}
             </ul>
             <label>
@@ -102,7 +105,11 @@ function CreateSpot () {
             </label>
             <label id="state">
               State
-              <select className ="select" value={state} onChange={(e) => setState(e.target.value)}>
+              <select
+                className="select"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+              >
                 {stateOptions.map((option) => (
                   <option>{option}</option>
                 ))}
