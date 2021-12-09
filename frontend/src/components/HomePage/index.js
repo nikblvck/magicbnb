@@ -32,8 +32,8 @@ function HomePage() {
                   </NavLink>
 
                   <ul className="spotImagesDiv">
-                    
-                    {/* {spot.Images.map((image) => {
+
+                    {spot.Images.map((image) => {
                       if (image) {
                         return (
                           <li className="spotImage" key={image.id}>
@@ -41,7 +41,7 @@ function HomePage() {
                           </li>
                         );
                       }
-                    })} */}
+                    })}
                   </ul>
                   <ul>
                     <li className="spotList" id="spotPrice">

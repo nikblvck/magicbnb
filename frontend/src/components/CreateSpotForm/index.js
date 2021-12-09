@@ -22,9 +22,6 @@ function CreateSpot () {
     const [errors, setErrors] = useState([]);
 
 
-  useEffect(() => {
-
-  }, [name, address, city, state, country, price])
 
     if (!sessionUser) return <Redirect to="/login" />;
     const handleSubmit = (e) => {
@@ -62,9 +59,11 @@ function CreateSpot () {
         url,
       };
 
-      if(!errors)
-      dispatch(addSpot(newSpot)).then((spot) =>
-    history.push(`/spots/${spot.id}`));
+      if(errors.length === 0){
+  dispatch(addSpot(newSpot)).then((spot) => history.push(`/spots/${spot.id}`));
+      }
+      else return
+
     };
 
     return (
@@ -79,6 +78,7 @@ function CreateSpot () {
                 </li>
               ))}
             </ul>
+            <br/>
             <label>
               Location Name
               <input
