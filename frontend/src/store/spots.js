@@ -61,7 +61,7 @@ export const editSpot = (editedSpot) => async (dispatch) => {
     body: JSON.stringify(editedSpot),
   });
   const data = await res.json();
-  await dispatch(addSpot(data.spot, data.image));
+  await dispatch(editSpot(data.spot, data.image));
 };
 
 //add spot
