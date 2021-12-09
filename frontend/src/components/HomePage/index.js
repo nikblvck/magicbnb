@@ -14,7 +14,7 @@ function HomePage() {
 
 
   useEffect(() => {
-    dispatch(getSpots());
+    dispatch(getSpots(spots));
   }, [dispatch]);
 
   return (
