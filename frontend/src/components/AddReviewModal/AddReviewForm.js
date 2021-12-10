@@ -28,6 +28,7 @@ const [review, setReview] = useState("");
 
   return (
     <>
+    <div className="addReviewContainer">
     <form onSubmit={handleSubmit}>
       <label>
         Your thoughts on this spot...
@@ -38,6 +39,7 @@ const [review, setReview] = useState("");
       </label>
       <button type="submit">ADD REVIEW</button>
     </form>
+    </div>
     </>
   )
 }

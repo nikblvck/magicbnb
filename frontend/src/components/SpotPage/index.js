@@ -74,7 +74,7 @@ function SpotPage() {
           <div className="spotContainer">
             <h1>{name}</h1>
             <ul className="spotImageDiv">
-              {spot.Images.map((image) => {
+              {spot.Images?.map((image) => {
                 if (image) {
                   return (
                     <li className="spotImage" key={image.id}>

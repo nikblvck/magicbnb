@@ -5,20 +5,44 @@ import "./ReviewsDiv.css"
 function ReviewsDiv () {
  const {spotId} = useParams();
  const dispatch = useDispatch();
- const reviews = useSelector((state) => state.spots[spotId].Reviews)
- const sessionUser = useSelector((state=> state.session.user.id))
+ const reviews = useSelector((state) => state.spots[spotId]?.Reviews)
+ const sessionUser = useSelector((state=> state.session.user.id));
+ const review = useSelector(state => state.spots[spotId]?.Review)
+ const userId = sessionUser.id
+ const handleSubmit = (e) =>  {
 
+ }
+ const handleDelete = (e) => {
+
+ }
+let reviewUserButtons
+
+
+  // if (sessionUser && sessionUser.id === review.userId) {
+  //   reviewUserButtons = (
+  //     <>
+  //       <button onClick={handleSubmit}>
+  //         {" "}
+  //         <i className="fas fa-edit" />
+  //       </button>
+  //       <button onClick={handleDelete}>
+  //         <i className="fas fa-trash" />
+  //       </button>
+  //     </>
+  //   );
+  // } else {
+  //   reviewUserButtons = null;
+  // }
 
 let reviewDisplay;
 
-if(reviews.length < 1) {
+if(!reviews) {
   reviewDisplay = (
-    <div className="reviewsDiv">No reviews for this spot yet... </div>
+    <div>No reviews for this spot yet... </div>
   )
 } else {
   reviewDisplay = (
     <div>
-      <h2>Reviews</h2>
       <ul className="reviewsDiv">
         {reviews.map((review) => {
           if (review) {
@@ -27,6 +51,7 @@ if(reviews.length < 1) {
                 <li className="reviewText" key={review.id}>
                   {review.review}
                 </li>
+                {reviewUserButtons}
               </div>
             );
           }
