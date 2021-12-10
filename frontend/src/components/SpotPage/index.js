@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteSpot, getOneSpot } from "../../store/spots";
 import "./SpotPage.css";
+import AddReviewModal from "../AddReviewModal";
+import ReviewsDiv from "../ReviewsDiv";
 
 
 function SpotPage() {
@@ -15,6 +17,7 @@ function SpotPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [spot, setSpot] = useState({});
 
+
   // console.log(spots[spotId])
 
   ;
@@ -24,6 +27,8 @@ function SpotPage() {
       .then((spot) => setSpot(spot))
       .then(() => setIsLoaded(true));
   }, [dispatch]);
+
+
   const { id, name, address, city, state, country, price } = spot;
 
   const handleSubmit = (e) => {
@@ -54,17 +59,13 @@ function SpotPage() {
     userButtons = null;
   }
 
-  let reviewButtons;
 
-  if(sessionUser && sessionUser.id !== spot.userId) {
-    reviewButtons = (
+  let reviewButtons = (
       <>
-      <button>Add Review</button>
+      <AddReviewModal/>
       </>
     )
-  } else {
-    reviewButtons = null;
-  }
+
 
   return (
     <>
@@ -97,13 +98,9 @@ function SpotPage() {
       <br />
       {reviewButtons}
       <br />
+
       <div className="reviewsContainer">
-        <h1>R E V I E W S </h1>
-        {spot.Reviews.map((review) => {
-          if (review) {
-            return <p>{review.review}</p>;
-          }
-        })}
+        <ReviewsDiv />
       </div>
     </>
   );

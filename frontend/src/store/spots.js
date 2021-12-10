@@ -38,7 +38,7 @@ const erase = (spotId) => ({
   spotId,
 });
 
-const addReview = (reivew) => ({
+const addReview = (review) => ({
   type: ADD_REVIEW,
   review
 })
@@ -99,16 +99,22 @@ export const deleteSpot = (spotId) => async (dispatch) => {
 };
 
 //addReview
-export const createReview = (review) => async(dispatch => {
+export const createReview = (review) => async (dispatch) => {
   const res = await csrfFetch(`/api/reviews`, {
-    
-  })
-})
+    method:'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(review)
+  });
+  const data = await res.json();
+  dispatch(addReview(data.review))
+  return data.review
+}
 
 const initialState = {};
 
 const spotsReducer = (state = initialState, action) => {
   let newState = {};
+
 
   switch (action.type) {
     case LOAD:
@@ -122,15 +128,21 @@ const spotsReducer = (state = initialState, action) => {
       newState = { ...state };
       newState[action.spot.id] = action.spot;
       return newState;
+    case ADD:
+      newState = {...state};
+      newState[action.spot.id] = action.spot;
+      newState[action.spot.id].Images = [];
+      newState[action.spot.id].Images.push(action.image);
+      return newState;
 
     case ERASE:
       newState = { ...state };
       delete newState[action.spotId];
       return newState;
 
-    case ADD:
-      const spotId = action.spot.id;
-
+    case ADD_REVIEW:
+     const spotId = action.review.spotId
+     
       if (!state[spotId]) {
         return { ...state, [spotId]: { Reviews: [action.review] } };
       }
