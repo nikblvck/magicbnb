@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const db = require("../../db/models");
-const { Spot, Image } = db;
+const { Spot, Image, Review } = db;
 const router = express.Router();
 const { Op } = require("sequelize");
 const { check } = require("express-validator");
@@ -45,7 +45,7 @@ router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
     const spotId = req.params.id;
-    const spot = await Spot.findByPk(spotId, { include: Image });
+    const spot = await Spot.findByPk(spotId, { include: [Image, Review] });
     console.log(spot);
     return res.json({ spot });
   })

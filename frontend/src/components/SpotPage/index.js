@@ -3,18 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteSpot, getOneSpot } from "../../store/spots";
 import "./SpotPage.css";
+
+
 function SpotPage() {
   const { spotId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [spot, setSpot] = useState({});
 
   // console.log(spots[spotId])
 
-  console.log(spot);
+  ;
 
   useEffect(() => {
     dispatch(getOneSpot(spotId))
@@ -51,6 +54,18 @@ function SpotPage() {
     userButtons = null;
   }
 
+  let reviewButtons;
+
+  if(sessionUser && sessionUser.id !== spot.userId) {
+    reviewButtons = (
+      <>
+      <button>Add Review</button>
+      </>
+    )
+  } else {
+    reviewButtons = null;
+  }
+
   return (
     <>
       {isLoaded && (
@@ -70,7 +85,7 @@ function SpotPage() {
             </ul>
             <ul className="spotInfo">
               <li> {price} per night</li>
-              <br/>
+              <br />
               <li>
                 {city},{state} | {country}
               </li>
@@ -79,6 +94,17 @@ function SpotPage() {
         </div>
       )}
       <div className="userButtons">{userButtons}</div>
+      <br />
+      {reviewButtons}
+      <br />
+      <div className="reviewsContainer">
+        <h1>R E V I E W S </h1>
+        {spot.Reviews.map((review) => {
+          if (review) {
+            return <p>{review.review}</p>;
+          }
+        })}
+      </div>
     </>
   );
 }

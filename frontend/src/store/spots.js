@@ -4,6 +4,7 @@ const LOAD = "spots/load";
 const LOAD_ONE = "spots/loadOne";
 const ERASE = "spots/erase";
 const ADD = "spots/add";
+const ADD_REVIEW = "spots/addReview"
 
 const load = (spots, images) => {
   return {
@@ -13,11 +14,12 @@ const load = (spots, images) => {
   };
 };
 
-const loadOne = (spot, image) => {
+const loadOne = (spot, image, review) => {
   return {
     type: LOAD_ONE,
     spot,
     image,
+    review
   };
 };
 
@@ -35,6 +37,12 @@ const erase = (spotId) => ({
   type: ERASE,
   spotId,
 });
+
+const addReview = (reivew) => ({
+  type: ADD_REVIEW,
+  review
+})
+
 
 //get all spots
 export const getSpots = () => async (dispatch) => {
@@ -89,6 +97,13 @@ export const deleteSpot = (spotId) => async (dispatch) => {
     dispatch(erase(spotId));
   }
 };
+
+//addReview
+export const createReview = (review) => async(dispatch => {
+  const res = await csrfFetch(`/api/reviews`, {
+    
+  })
+})
 
 const initialState = {};
 
