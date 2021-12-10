@@ -1,0 +1,17 @@
+.reviewsDiv{
+  margin: auto;
+  background-color:rgba(255, 255, 255, 0.35);
+  justify-content: center;
+  border-radius: 32px;
+  text-align: center;
+  position:center;
+  max-width: 80%;
+  padding: 15px;
+}
+
+li {
+  display: inline-block;
+  vertical-align: center;
+   border-bottom:rgba(0, 0, 0, 0.35) 1.25px dotted;
+
+}

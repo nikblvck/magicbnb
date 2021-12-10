@@ -142,7 +142,7 @@ const spotsReducer = (state = initialState, action) => {
 
     case ADD_REVIEW:
      const spotId = action.review.spotId
-     
+
       if (!state[spotId]) {
         return { ...state, [spotId]: { Reviews: [action.review] } };
       }

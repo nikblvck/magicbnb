@@ -24,13 +24,13 @@ requireAuth,
 validateReview,
 asyncHandler(async(req, res) => {
   const userId = req.user.id;
-  const { spotId, review} = req.body;
-  const newReview = await Review.create({
+  const { spotId } = req.body;
+  const review = await Review.create({
     userId,
     spotId,
     review
   });
-  return res.json({newReview})
+  return res.json({review})
 }));
 
 //edit existing review

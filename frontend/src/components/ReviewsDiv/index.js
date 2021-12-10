@@ -1,23 +1,35 @@
 import {useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import "./ReviewsDiv.css"
 
 function ReviewsDiv () {
  const {spotId} = useParams();
  const dispatch = useDispatch();
  const reviews = useSelector((state) => state.spots[spotId].Reviews)
+ const sessionUser = useSelector((state=> state.session.user.id))
+
 
 let reviewDisplay;
 
-if(!reviews) {
+if(reviews.length < 1) {
   reviewDisplay = (
-    <div>No reviews for this spot yet... </div>
+    <div className="reviewsDiv">No reviews for this spot yet... </div>
   )
 } else {
   reviewDisplay = (
     <div>
-      <ul>
+      <h2>Reviews</h2>
+      <ul className="reviewsDiv">
         {reviews.map((review) => {
-          <li>{review.review}</li>
+          if (review) {
+            return (
+              <div className="singleReview">
+                <li className="reviewText" key={review.id}>
+                  {review.review}
+                </li>
+              </div>
+            );
+          }
         })}
       </ul>
     </div>
@@ -27,7 +39,6 @@ if(!reviews) {
   return (
     <>
     <div>
-      <h2>REVIEWS</h2>
       {reviewDisplay}
     </div>
     </>

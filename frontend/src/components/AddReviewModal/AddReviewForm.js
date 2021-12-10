@@ -23,6 +23,7 @@ const [review, setReview] = useState("");
       };
       dispatch(createReview(newReview));
       console.log(newReview);
+      history.push(`/spots/${spotId}`)
     };
 
   return (

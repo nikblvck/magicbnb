@@ -37,6 +37,8 @@ li.spotImage {
   align-items: center;
   display: inline-block;
   vertical-align: top;
+  padding: 10px;
+  border-style:hidden;
 }
 .spotImage {
   height: 200px;
