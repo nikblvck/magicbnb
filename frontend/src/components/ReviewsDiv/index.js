@@ -49,8 +49,9 @@ if(!reviews) {
             return (
               <div className="singleReview">
                 <li className="reviewText" key={review.id}>
-                  {review.review}
-                </li>
+                  {review.content}
+                </li><br/>
+                <li className="updatedAt" key={review.updatedAt}>{review.updatedAt}</li>
                 {reviewUserButtons}
               </div>
             );

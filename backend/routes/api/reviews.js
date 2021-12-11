@@ -10,7 +10,7 @@ const { user } = require('pg/lib/defaults');
 
 
 const validateReview = [
-  check("review")
+  check("content")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a review for this spot."),
   handleValidationErrors,
@@ -24,11 +24,11 @@ requireAuth,
 validateReview,
 asyncHandler(async(req, res) => {
   const userId = req.user.id;
-  const { spotId } = req.body;
+  const { content, spotId } = req.body;
   const review = await Review.create({
     userId,
     spotId,
-    review
+    content
   });
   return res.json({review})
 }));

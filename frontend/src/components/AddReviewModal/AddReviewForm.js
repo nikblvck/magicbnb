@@ -9,7 +9,7 @@ const {spotId} = useParams();
 const dispatch = useDispatch();
 const history = useHistory();
 const sessionUser = useSelector((state) => state.session.user);
-const [review, setReview] = useState("");
+const [content, setContent] = useState("");
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -19,7 +19,7 @@ const [review, setReview] = useState("");
       const newReview = {
         userId,
         spotId,
-        review,
+        content,
       };
       dispatch(createReview(newReview));
       console.log(newReview);
@@ -33,8 +33,8 @@ const [review, setReview] = useState("");
       <label>
         Your thoughts on this spot...
         <textarea
-        value={review}
-        onChange={(e) => setReview(e.target.value)}
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
         required />
       </label>
       <button type="submit">ADD REVIEW</button>
