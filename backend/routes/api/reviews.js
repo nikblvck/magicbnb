@@ -17,7 +17,10 @@ const validateReview = [
 ];
 
 
-
+//review not found
+const reviewNotFound = () => {
+  return new Error('Review does not exist')
+}
 //create a new review
 router.post('/',
 requireAuth,
@@ -41,15 +44,37 @@ router.put(
   asyncHandler(async(req, res, next) => {
     const reviewId = req.params.id
     const userId = req.user.id
-    const {spotId, review} = req.body;
+    const {spotId, content} = req.body;
 
-    const editedReview = await Review.findByPk(reviwId)
+    const editedReview = await Review.findByPk(reviewId)
     if(review.userId === userId) {
-      review.review = review;
+      review.content = content;
       await review.save();
       return res.json({editedReview})
     }
   })
+)
+
+//delete review
+router.delete(
+  "/:id(\\d+)",
+  requireAuth,
+  asyncHandler(async(req, res, next)=> {
+    const userId = req.user.id;
+    const reviewId = req.params.id;
+
+    const review = await Review.findByPk(reviewId);
+    if (review && review.userId === userId) {
+      await review.destroy();
+      return res.json({
+        message: `Review ${reviewId} deleted.`
+      })
+    } else {
+      const error = reviewNotFound();
+      next(error)
+    }
+  })
+
 )
 
 

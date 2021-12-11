@@ -6,9 +6,8 @@ function ReviewsDiv () {
  const {spotId} = useParams();
  const dispatch = useDispatch();
  const reviews = useSelector((state) => state.spots[spotId]?.Reviews)
- const sessionUser = useSelector((state=> state.session.user.id));
- const review = useSelector(state => state.spots[spotId]?.Review)
- const userId = sessionUser.id
+ const sessionUser = useSelector((state=> state.session.user?.id));
+ const review = useSelector(state => state?.spots[spotId]?.Review)
  const handleSubmit = (e) =>  {
 
  }
@@ -38,7 +37,7 @@ let reviewDisplay;
 
 if(!reviews) {
   reviewDisplay = (
-    <div>No reviews for this spot yet... </div>
+    <div className="reviewsDiv">No reviews for this spot yet... </div>
   )
 } else {
   reviewDisplay = (

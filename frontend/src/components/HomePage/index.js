@@ -9,7 +9,7 @@ import "./HomePage.css";
 function HomePage() {
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.session.user)
+  const user = useSelector((state) => state.session?.user)
   const spots = useSelector((state) => Object.values(state.spots));
 
 

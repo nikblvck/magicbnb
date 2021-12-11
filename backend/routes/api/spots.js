@@ -37,7 +37,7 @@ router.get(
       order: [["createdAt", "DESC"]],
     });
 
-    return res.json(spots);
+    return res?.json(spots);
   })
 );
 //get one spot

@@ -5,7 +5,9 @@ const LOAD_ONE = "spots/loadOne";
 const ERASE = "spots/erase";
 const ADD = "spots/add";
 const ADD_REVIEW = "spots/addReview"
+const ERASE_REVIEW = "spots/eraseReview"
 
+//GET ALL SPOTS ACTION
 const load = (spots, images) => {
   return {
     type: LOAD,
@@ -14,6 +16,7 @@ const load = (spots, images) => {
   };
 };
 
+//GET ONE SPOT ACTION
 const loadOne = (spot, image, review) => {
   return {
     type: LOAD_ONE,
@@ -23,7 +26,7 @@ const loadOne = (spot, image, review) => {
   };
 };
 
-
+//ADD SPOT ACTION
 const add = (spot, image) => {
   return {
     type: ADD,
@@ -32,19 +35,25 @@ const add = (spot, image) => {
   };
 };
 
-
+//DELETE SPOT ACTION
 const erase = (spotId) => ({
   type: ERASE,
   spotId,
 });
 
+//ADD REVIEW ACTION
 const addReview = (review) => ({
   type: ADD_REVIEW,
   review
 })
 
+//DELETE REVIEW ACTION
+const eraseReview = (reviewId) => ({
+  type: ERASE_REVIEW,
+  reviewId
+})
 
-//get all spots
+//Get All Spots
 export const getSpots = () => async (dispatch) => {
   const res = await csrfFetch("/api/spots");
   if (res.ok) {
@@ -53,14 +62,15 @@ export const getSpots = () => async (dispatch) => {
   }
 };
 
-//get one spot
+//Get One Spot
 export const getOneSpot = (spotId) => async (dispatch) => {
   const res = await csrfFetch(`/api/spots/${spotId}`);
   const data = await res.json();
   dispatch(loadOne(data.spot));
   return data.spot;
 };
-//edit spot
+
+//Edit Spot
 export const editSpot = (editedSpot) => async (dispatch) => {
   const spotId = editedSpot.spotId;
   const res = await csrfFetch(`/api/spots/${spotId}`, {
@@ -72,7 +82,7 @@ export const editSpot = (editedSpot) => async (dispatch) => {
   await dispatch(editSpot(data.spot, data.image));
 };
 
-//add spot
+//Add Spot
 export const addSpot = (spot) => async(dispatch) => {
   const res = await csrfFetch(`/api/spots`, {
     method: 'POST',
@@ -86,7 +96,7 @@ export const addSpot = (spot) => async(dispatch) => {
   return data.spot;
 }
 
-//delete spot
+//Delete Spot
 export const deleteSpot = (spotId) => async (dispatch) => {
   const res = await csrfFetch(`/api/spots/${spotId}`, {
     method: "DELETE",
@@ -98,7 +108,7 @@ export const deleteSpot = (spotId) => async (dispatch) => {
   }
 };
 
-//addReview
+//Add Review
 export const createReview = (review) => async (dispatch) => {
   const res = await csrfFetch(`/api/reviews`, {
     method:'POST',
@@ -108,6 +118,17 @@ export const createReview = (review) => async (dispatch) => {
   const data = await res.json();
   dispatch(addReview(data.review))
   return data.review
+}
+
+//Delete Review
+export const deleteReview = (reviewId) => async (dispatch) => {
+  const res = await csrfFetch(`api/reviews/${reviewId}`, {
+    method: 'DELETE'
+  });
+  const data = await res.json();
+  if(data.message) {
+    dispatch(eraseReview(reviewId))
+  }
 }
 
 const initialState = {};
@@ -149,6 +170,11 @@ const spotsReducer = (state = initialState, action) => {
 
       newState = { ...state };
       newState[spotId].Reviews = [...state[spotId].Reviews, action.review];
+      return newState;
+
+    case ERASE_REVIEW:
+      newState = {...state};
+      delete newState[action.reviewId]
       return newState;
 
     default:
