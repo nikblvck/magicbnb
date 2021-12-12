@@ -11,6 +11,7 @@
   background-color:rgba(0, 0, 0, 0.6);
   text-align: center;
   align-items: center;
+  padding-top: 25px;
 }
 a{
   color:white;
@@ -39,14 +40,8 @@ li{
   align-items: center;
   text-align: center;
   justify-content: center;
-  padding-top: 15px;
 
 }
-
-.fa-hat-wizard{
-  padding: none;
-}
-
 
 .navLeft{
  float:left;

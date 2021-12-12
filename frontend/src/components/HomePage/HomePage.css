@@ -4,15 +4,17 @@ body{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
 }
 .home-container{
   padding-top: 20px;
-  margin: auto;
+  margin: 30px auto auto auto;
   background-color:rgba(255, 255, 255, 0.35);
   justify-content: center;
   border-radius: 32px;
   max-width: 1200px;
-  align-items: center;
+
+  flex-direction: row;
 }
 .welcome-heading{
   padding-top: 20px;
@@ -26,27 +28,52 @@ p {
   color: black;
   align-items: center;
   text-align: center;
+  padding-top: 15px;
+  padding-bottom: 30px;
 }
-ul {
-  margin: 0 auto;
+ul.spotImagesDiv{
+  width: 325px;
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: hidden;
   text-align: center;
-  justify-content: center;
+  margin: 0px 0px;
+}
+
+li.spotCard{
+  background-color: rgba(22, 22, 22, 0.65);
+  border-radius: 50px;
+  width: 325px;
+  margin: 10px;
+  padding:0;
 }
 li.spotImage {
   justify-content: center;
   align-items: center;
-  display: inline-block;
-  vertical-align: top;
-  padding: 10px;
   border-style:hidden;
+
 }
 .spotImage {
   height: 200px;
   width: 300px;
   border-radius: 32px;
+  align-items: center;
 }
 
 .spotDiv {
-  border-bottom:rgba(0, 0, 0, 0.35) 1.25px dotted;
+  width: 350px;
+  display: inline-flex;
+}
+h3{
+  padding-top: 10px;
+}
+li#spotCity {
+  color:crimson;
+  padding-bottom: 10px;
+  font-size: large;
+ text-shadow:  rgba(22, 22, 22, 0.75)2px 2px;
+}
 
+li#spotPrice{
+  color:white;
 }

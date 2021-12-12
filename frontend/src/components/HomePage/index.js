@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { BrowserRouter, NavLink, Route, useParams } from "react-router-dom";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 // import * as sessionActions from "../../store/session";
 import { getSpots, addReview } from "../../store/spots";
 import "./HomePage.css";
 
 function HomePage() {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const user = useSelector((state) => state.session?.user)
   const spots = useSelector((state) => Object.values(state.spots));
 
@@ -22,11 +22,11 @@ function HomePage() {
       <div className="home-container">
         <h1 className="welcome-heading">magicbnb</h1>
         <p> Find your home <i>away</i> from Hogwarts!</p>
-        <ul className="homeContainer">
+        <ul className="spots">
           {spots.map((spot) => {
             return (
               <div className="spotDiv">
-                <li>
+                <li className="spotCard">
                   <NavLink to={`/spots/${spot.id}`}>
                     <h3>{spot.name}</h3>
                   </NavLink>

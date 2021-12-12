@@ -29,8 +29,11 @@ function Navigation({ isLoaded }) {
         <ul>
           <li>
             <NavLink exact to="/">
-              Home
+              HOME
             </NavLink>
+          </li>
+          <li>
+            <a href="https://www.github.com/nikblvck/magicbnb">ABOUT</a>
           </li>
         </ul>
       </div>

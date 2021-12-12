@@ -9,7 +9,7 @@
   padding: 15px;
 }
 
-li {
+li.singleReview{
   display: inline-block;
   vertical-align: center;
    border-bottom:rgba(0, 0, 0, 0.35) 1.25px dotted;
