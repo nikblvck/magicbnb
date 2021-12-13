@@ -1,5 +1,5 @@
 .spotContainer{
-  margin: auto;
+  margin: 50px auto auto auto;
   background-color:rgba(255, 255, 255, 0.35);
   justify-content: center;
   border-radius: 32px;
@@ -13,12 +13,16 @@
 h1{
   color: crimson;
   text-align: center;
+  font-size: 32px;
+  padding: 10px;
 }
+
 ul {
-  margin: 0 auto;
+  margin:  auto;
   text-align: center;
 }
 li {
+  margin: 15px;
   display: inline-block;
   vertical-align: center;
 }

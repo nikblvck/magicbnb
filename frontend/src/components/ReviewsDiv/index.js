@@ -39,10 +39,6 @@ if(!reviews) {
   reviewDisplay = (
     <div className="reviewsDiv">No reviews for this spot yet... </div>
   )
-}if(reviews.length ===0) {
-    reviewDisplay = (
-      <div className="reviewsDiv">No reviews for this spot yet... </div>
-    );
 }else{
   reviewDisplay = (
     <div>
