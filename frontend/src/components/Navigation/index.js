@@ -28,7 +28,7 @@ function Navigation({ isLoaded }) {
       <div className="navLeft">
         <ul>
           <li>
-            <NavLink exact to="/">
+            <NavLink exact to="/spots">
               HOME
             </NavLink>
           </li>

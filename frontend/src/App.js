@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
+import SplashPage from "./components/SplashPage";
 import Navigation from "./components/Navigation";
 import Homepage from "./components/HomePage";
 import SpotPage from "./components/SpotPage";
@@ -24,7 +25,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
         <Switch>
           <Route exact path="/">
-            <Homepage/>
+            <SplashPage/>
           </Route>
           <Route exact path="/spots">
             <Homepage />
