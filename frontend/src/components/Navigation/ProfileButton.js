@@ -30,7 +30,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout())
-    history.push('/spots');
+    history.push('/');
   };
 
   const handleClickToCreate = (e) => {
