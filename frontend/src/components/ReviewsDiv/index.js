@@ -30,11 +30,11 @@ function ReviewsDiv() {
 
   let reviewDisplay;
 
-  if (!reviews) {
+  if (!sessionUser) {
     reviewDisplay = (
       <div className="reviewsDiv">No reviews for this spot yet... </div>
     );
-  } if(reviews) {
+  } else {
     reviewDisplay = (
       <div>
         <ul className="reviewsDiv">

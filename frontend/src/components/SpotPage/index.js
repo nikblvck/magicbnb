@@ -99,9 +99,9 @@ function SpotPage() {
       {reviewButtons}
       <br />
 
-      <div className="reviewsContainer">
+      {/* <div className="reviewsContainer">
         <ReviewsDiv />
-      </div>
+      </div> */}
     </>
   );
 }
