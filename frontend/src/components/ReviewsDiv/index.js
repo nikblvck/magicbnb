@@ -34,7 +34,7 @@ function ReviewsDiv() {
     reviewDisplay = (
       <div className="reviewsDiv">No reviews for this spot yet... </div>
     );
-  } else {
+  } if(reviews) {
     reviewDisplay = (
       <div>
         <ul className="reviewsDiv">
