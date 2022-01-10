@@ -26,7 +26,7 @@ function Navigation({ isLoaded }) {
   return (
     <div className="navContainer">
       <div className="navLeft">
-        <ul>
+        <ul className="navL">
           <li>
             <NavLink exact to="/spots">
               HOME
@@ -38,7 +38,7 @@ function Navigation({ isLoaded }) {
         </ul>
       </div>
       <div className="navRight">
-        <ul>
+        <ul className="navR">
           <li>{sessionLinks}</li>
         </ul>
       </div>

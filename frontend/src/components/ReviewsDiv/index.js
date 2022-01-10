@@ -8,16 +8,27 @@ function ReviewsDiv() {
   const reviews = useSelector((state) => state.spots[spotId]?.Reviews);
   const sessionUser = useSelector((state) => state.session.user?.id);
   const review = useSelector((state) => state?.spots[spotId]?.Review);
-  const handleSubmit = (e) => {};
-  const handleDelete = (e) => {};
+  // const handleSubmit = (e) => {};
+  // const handleDelete = (e) => {};
   let reviewUserButtons;
 
+  // if (sessionUser && sessionUser.id === review.userId) {
+  //   reviewUserButtons = (
+  //     <div className="review-user-buttons">
+  //       <button className="review-user-buttons__edit">
+  //         // <i className="fas fa-edit" />
+  //       </button>
+  //       <button className="review-user-buttons__delete" onClick={handleDelete}>
+  //         <i className="fas fa-trash" />
+  //       </button>
+  //     </div>
+  //   );
+  // }
   // if (sessionUser && sessionUser.id === review.userId) {
   //   reviewUserButtons = (
   //     <>
   //       <button onClick={handleSubmit}>
   //         {" "}
-  //         <i className="fas fa-edit" />
   //       </button>
   //       <button onClick={handleDelete}>
   //         <i className="fas fa-trash" />
@@ -30,7 +41,7 @@ function ReviewsDiv() {
 
   let reviewDisplay;
 
-  if (!sessionUser) {
+  if (reviews.length === 0) {
     reviewDisplay = (
       <div className="reviewsDiv">No reviews for this spot yet... </div>
     );

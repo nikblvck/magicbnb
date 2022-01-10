@@ -73,7 +73,7 @@ function CreateSpot () {
           <form onSubmit={handleSubmit}>
             <ul className="errors">
               {errors.map((error) => (
-                <li key={error}>
+                <li className="error" key={error}>
                   {error}
                 </li>
               ))}

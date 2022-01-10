@@ -7,11 +7,12 @@
 .navContainer{
   min-width: 300px;
   max-width: 3200px;
-  height: 50px;
+  height: 30px;
   background-color:rgba(0, 0, 0, 0.6);
   text-align: center;
   align-items: center;
-  padding-top: 25px;
+  padding-top: 20px;
+
 }
 a{
   color:white;
@@ -33,14 +34,14 @@ ul.profile-dropdown{
   align-items: center;
   text-align: center;
   justify-content: center;
+  position:inherit
 }
 
 li{
-  display: inline-flex;
   align-items: center;
   text-align: center;
   justify-content: center;
-
+  display: inline-block;
 }
 
 .navLeft{
@@ -48,10 +49,12 @@ li{
 
 }
 
-.navRight{
+div.navRight{
   float: right;
+
 }
 
-.navButtons{
+div.navButtons{
   justify-content: space-between;
+
 }

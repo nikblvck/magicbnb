@@ -13,3 +13,8 @@ img.splashImage{
   width: 900px;
   border-radius: 32px;
 }
+
+img.splashImage:hover{
+  filter: blur(2px);
+
+}

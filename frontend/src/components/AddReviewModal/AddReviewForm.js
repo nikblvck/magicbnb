@@ -11,6 +11,18 @@ const history = useHistory();
 const sessionUser = useSelector((state) => state.session.user);
 const [content, setContent] = useState("");
 
+// const handleSubmit = (e) => {
+//   e.preventDefault();
+//   const userId = sessionUser.id;
+//   const spotId = spotId;
+//   const newReview = {
+//     spotId,
+//     userId,
+//     content
+//   };
+//   dispatch(createReview(newReview));
+//   history.push(`/spots/${spotId}`);
+// };
     const handleSubmit = (e) => {
       e.preventDefault();
       const userId = sessionUser.id;

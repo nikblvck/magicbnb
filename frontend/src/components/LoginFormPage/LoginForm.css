@@ -6,7 +6,6 @@ body {
   margin:0;
   padding:0;
   font-family: sans-serif;
-  background:linear-gradient(66deg, #100c24, green)
 }
 
 .formContainer {
@@ -31,6 +30,10 @@ label {
 
 input{
   width: 100%;
- 
 
+
+}
+
+.noAccountText{
+  color: #ffffff;
 }

@@ -9,7 +9,7 @@ body{
 .home-container{
   padding-top: 20px;
   margin: 50px auto auto auto;
-  background-color:rgba(255, 255, 255, 0.35);
+  background-color:rgba(255, 255, 255, 0.15);
   justify-content: center;
   border-radius: 32px;
   max-width: 1200px;
@@ -32,8 +32,8 @@ p {
   padding-bottom: 30px;
 }
 ul.spotImagesDiv{
-  width: 325px;
-  height: 215px;
+  width: auto;
+  height: 245px;
   overflow-x: hidden;
   overflow-y: hidden;
   text-align: center;
@@ -41,8 +41,8 @@ ul.spotImagesDiv{
 }
 
 li.spotCard{
-  background-color: rgba(22, 22, 22, 0.65);
-  border-radius: 50px;
+  /* background-color: rgba(22, 22, 22, 0.65); */
+  border-radius: 32px;
   width: 325px;
   margin: 10px;
   padding:0;
@@ -56,7 +56,7 @@ li.spotImage {
 .spotImage {
   height: 200px;
   width: 300px;
-  border-radius: 32px;
+  border-radius: 15px;
   align-items: center;
 }
 
@@ -68,10 +68,10 @@ h3{
   padding-top: 10px;
 }
 li#spotCity {
-  color:crimson;
-  padding-bottom: 10px;
+  color:rgb(54, 54, 54);
+  padding-top:2%;
   font-size: large;
- text-shadow:  rgba(22, 22, 22, 0.75)2px 2px;
+ /* text-shadow:  rgba(22, 22, 22, 0.75)2px 2px; */
 }
 
 li#spotPrice{
